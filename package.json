@@ -1,0 +1,11 @@
+{
+  "name": "pm-central-enterprise",
+  "version": "1.0.0",
+  "private": true,
+  "description": "PM CENTRAL Enterprise maintenance portal",
+  "scripts": {
+    "build": "node build.mjs",
+    "test": "node --test test.mjs",
+    "verify": "npm test && npm run build"
+  }
+}
