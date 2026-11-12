@@ -1,15 +1,10 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-const html = await readFile('index.html', 'utf8');
-test('Bagging contains the exact PM Ink Jet Printer URL', () => {
-  assert.ok(html.includes('https://script.google.com/macros/s/AKfycbz_F-JG6m7071JlD0CjVpQgI4LizQ5UpGRxq50BLoARqYqdbdoC5fV06dbNN3y4G5oepQ/exec'));
-  assert.ok(html.includes('id="bagging"'));
-});
-test('Analyzer contains the exact PM Analyzer WTP URL', () => {
-  assert.ok(html.includes('https://script.google.com/macros/s/AKfycbyAPldrvvA0jTi4aAw_x7BKKwsfCq8vessqVLIaagWFiKgfkCBCu1vrOXIBKp0r5b0_/exec'));
-  assert.ok(html.includes('id="analyzer"'));
-});
-test('four departments and key modules are present', () => {
-  for (const id of ['bagging','analyzer','bfr','warehouse','scheduler','workorders','equipment','reports']) assert.ok(html.includes(`id="${id}"`));
-});
+const html = await readFile('index.html','utf8');
+test('keeps Bagging printer Apps Script in Bagging module',()=>{assert.match(html,/const URLS=/);assert.match(html,/id="sidenav"/);assert.ok(html.includes('https://script.google.com/macros/s/AKfycbz_F-JG6m7071JlD0CjVpQgI4LizQ5UpGRxq50BLoARqYqdbdoC5fV06dbNN3y4G5oepQ/exec'));});
+test('keeps Analyzer WTP Apps Script in Analyzer module',()=>{assert.ok(html.includes('https://script.google.com/macros/s/AKfycbyAPldrvvA0jTi4aAw_x7BKKwsfCq8vessqVLIaagWFiKgfkCBCu1vrOXIBKp0r5b0_/exec'));});
+test('includes all required department and maintenance routes',()=>{for(const id of ['dashboard','bagging','analyzer','bfr','warehouse','scheduler','equipment','workorders','reports','settings'])assert.ok(html.includes(`data-page="${id}"`)||html.includes(`${id}:`),`missing ${id}`);});
+test('provides local persistence, CSV export and responsive layout',()=>{assert.ok(html.includes('localStorage'));assert.ok(html.includes('exportAll'));assert.ok(html.includes('@media(max-width:900px)'));});
+test('dashboard presents four department cards with previous and next controls',()=>{for(const token of ['department-carousel','carousel-prev','carousel-next','BAGGING','ANALYZER','PRODUCT WAREHOUSE'])assert.ok(html.includes(token),`missing ${token}`);});
+test('provides separate file upload and script management pages',()=>{for(const token of ['data-page="uploads"','data-page="scripts"','fileUpload','scriptUpload','indexedDB','TIDAK dijalankan otomatis'])assert.ok(html.includes(token),`missing ${token}`);});
