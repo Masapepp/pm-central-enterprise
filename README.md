@@ -1,21 +1,17 @@
-# PM CENTRAL Enterprise v2
+# PM CENTRAL Enterprise V4
 
-## Deploy to Netlify
-- Repository root contains `index.html`, `package.json`, `build.mjs`, `netlify.toml`, `test.mjs`.
-- Build command: `npm run build`
-- Publish directory: `dist`
-- Node version: 22
+## Perubahan V4
+- Dashboard menampilkan empat kartu departemen sekaligus: Bagging, Analyzer, BFR, Product Warehouse.
+- Carousel dan tombol Previous/Next pada kartu departemen dihapus.
+- Tombol Back dan Next tersedia pada halaman selain Dashboard untuk berpindah urutan halaman: Home → Bagging → Analyzer → BFR → Product Warehouse → PM Scheduler → Equipment Master → Work Orders → Reports Center → Upload File → Script Management → Settings.
+- URL Google Apps Script Bagging dan Analyzer dipertahankan.
+- Upload File dan Script Management tetap tersedia. File masih disimpan lokal di browser/perangkat, belum tersinkron ke Google Drive/server. Script hanya disimpan/diunduh dan tidak dijalankan otomatis.
 
-## Current capabilities
-- Responsive enterprise-style navigation and dashboard.
-- Bagging and Analyzer embed the original Apps Script URLs in their correct menus, with open-in-new-tab fallback.
-- BFR and Product Warehouse equipment register UI.
-- Equipment, PM schedule, and work order forms.
-- Local browser persistence and CSV export.
-- Responsive mobile navigation.
+## Deploy
+1. Ekstrak ZIP.
+2. Upload keenam file ke root repository GitHub, ganti file lama.
+3. Commit changes.
+4. Tunggu Netlify deploy berstatus Published.
 
-## Important limitations
-This is a frontend Phase 1 workspace. Records are stored only in the current browser using localStorage; they are not shared between users/devices and are not a secure central database. Supabase, Google OAuth, Google Drive API uploads, role-based access control, recurring schedule automation, email notifications, PDF/XLSX generation, audit logs and server backups are not yet connected. Do not use local mode as the authoritative production maintenance record until backend integration and security review are completed.
-
-## Verify locally
-Run `npm test` and `npm run build` using Node.js 22+.
+Build: `npm run build`
+Test: `npm test`
