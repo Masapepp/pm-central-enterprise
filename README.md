@@ -1,15 +1,30 @@
-# PM CENTRAL Enterprise V4
+# PM CENTRAL Enterprise V7
 
-## Perubahan V4
-- Dashboard menampilkan empat kartu departemen sekaligus: Bagging, Analyzer, BFR, Product Warehouse.
-- Carousel dan tombol Previous/Next pada kartu departemen dihapus.
-- Tombol Back dan Next tersedia pada halaman selain Dashboard untuk berpindah urutan halaman: Home → Bagging → Analyzer → BFR → Product Warehouse → PM Scheduler → Equipment Master → Work Orders → Reports Center → Upload File → Script Management → Settings.
-- URL Google Apps Script Bagging dan Analyzer dipertahankan.
-- Upload File dan Script Management tetap tersedia. File masih disimpan lokal di browser/perangkat, belum tersinkron ke Google Drive/server. Script hanya disimpan/diunduh dan tidak dijalankan otomatis.
+## Struktur menu
+- Menu utama: PE, NPE, Analyzer & Bagging.
+- Analyzer & Bagging: Bagging (PM Ink Jet Printer), BFR, Analyzer (PM Analyzer WTP), Product Warehouse.
+- Dokumen pendukung terpisah: PM Compliance dan Daily Schedule MPE2. Keduanya memiliki halaman tersendiri, iframe SharePoint, dan tombol untuk membuka file langsung.
+- Dashboard memisahkan tiga workspace tim dari dua dokumen bersama menggunakan jarak, garis pemisah, dan kartu dengan aksen warna berbeda; tema gelap enterprise sebelumnya dipertahankan.
+- PE dan NPE adalah halaman awal/placeholder; link form dan sumber data belum diberikan.
+
+## Integrasi link
+- PM Ink Jet Printer: Google Apps Script URL terbaru yang diberikan pengguna.
+- PM Analyzer WTP: Google Apps Script URL terbaru yang diberikan pengguna.
+- PM Compliance: SharePoint sharing link terbaru yang diberikan pengguna.
+- Daily Schedule MPE2: SharePoint sharing link yang diberikan pengguna.
+
+## Catatan akses SharePoint
+Tampilan iframe bergantung pada kebijakan Microsoft 365/SharePoint dan hak akses file. Jika iframe diblokir atau meminta login, gunakan tombol Buka di SharePoint. Link sharing bukan pengganti autentikasi atau Microsoft Graph API. Kredensial tidak disimpan di frontend.
+
+## Batasan saat ini
+- Link Google Apps Script dibuka di dalam iframe dengan tombol fallback tab baru.
+- Data equipment, schedule, work order dan upload lokal tetap tersimpan di browser/perangkat sesuai implementasi V5.
+- Belum ada integrasi Microsoft Graph API, upload otomatis ke OneDrive, sinkronisasi lintas perangkat, database terpusat, atau role-based access control.
+- PE dan NPE belum memiliki form karena URL modulnya belum diberikan.
 
 ## Deploy
 1. Ekstrak ZIP.
-2. Upload keenam file ke root repository GitHub, ganti file lama.
+2. Upload enam file ke root repository GitHub dan ganti file lama.
 3. Commit changes.
 4. Tunggu Netlify deploy berstatus Published.
 
