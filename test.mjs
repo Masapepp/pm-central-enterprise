@@ -83,6 +83,16 @@ test('README identifies V7 and separates team workspaces from shared documents',
 test('package and build metadata are aligned with project version V7',async()=>{
   const pkg = JSON.parse(await readFile('package.json','utf8'));
   const build = await readFile('build.mjs','utf8');
-  assert.equal(pkg.version,'7.0.0');
-  assert.match(build,/PM CENTRAL V7 build complete/);
+  assert.equal(pkg.version,'7.1.0');
+  assert.match(build,/PM CENTRAL V7.1 build complete/);
+});
+
+test('MPE2 creator branding is visible in the app shell and documented in README',async()=>{
+  assert.match(html,/MPE2 TEAM/);
+  assert.match(html,/Developed &amp; Designed by Masapep \/ BWK/);
+  assert.match(html,/An Internal Digital Maintenance Initiative/);
+  assert.match(html,/function aboutPage\(/);
+  const readme = await readFile('README.md','utf8');
+  assert.match(readme,/Developer: Masapep \/ BWK/);
+  assert.match(readme,/Team: MPE2/);
 });

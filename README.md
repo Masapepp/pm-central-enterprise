@@ -1,4 +1,4 @@
-# PM CENTRAL Enterprise V7
+# PM CENTRAL Enterprise V7.1 – MPE2 Edition
 
 ## Struktur menu
 - Menu utama: PE, NPE, Analyzer & Bagging.
@@ -30,3 +30,14 @@ Tampilan iframe bergantung pada kebijakan Microsoft 365/SharePoint dan hak akses
 
 Build: `npm run build`
 Test: `npm test`
+
+
+## Identitas Aplikasi
+
+- Project: PM CENTRAL Enterprise
+- Developer: Masapep / BWK
+- Team: MPE2
+- Release: V7.1 Branding Edition
+- Platform: Netlify + GitHub
+
+Footer aplikasi menampilkan “Developed & Designed by Masapep / BWK” dan “An Internal Digital Maintenance Initiative – MPE2 Team”.
